@@ -11,8 +11,8 @@ body{
 
 h1{
     text-align: center;
-    margin-top: 50px;
-    font-size: 50px;
+    margin-top: 30px;
+    font-size: 30px;
     color: #968699;
 }
 
@@ -34,8 +34,8 @@ main .background{
 }
 
 main {
-    width: 800px;
-    height: 800px;
+    width: 450px;
+    height: 450px;
     max-width: 100%;
     position: relative; 
 }
@@ -54,8 +54,8 @@ main {
 }
 
 #sim, #nao{
-    font-size: 40px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 10px;
     display: block;
     cursor: pointer;
     color: aliceblue;
@@ -97,14 +97,14 @@ main img.background{
 }
 
 #mensagem {
-    font-size: 35px;
+    font-size: 20px;
     margin-bottom: 20px;
     text-shadow: 0 0 8px #0000008a; /* garante leitura sobre a imagem */
 }
 
 #proximo{
   padding: 10px 20px;
-  font-size: 30px;
+  font-size: 25px;
   border-radius:10px;
   border:none;
   background:#ff89b5;
@@ -116,7 +116,7 @@ main img.background{
 
 #btnImprimir {
     padding: 10px 20px;
-    font-size: 30px;
+    font-size: 20px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
