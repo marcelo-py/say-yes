@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 10px;
+    font-family: 'Comic Sans MS', cursive, 'Times New Roman', Times, serif;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+    color: #968699;
+}
+
+main{
+    background-color: #968699a2;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+main .background{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    transition: opacity 0.1s ease;
+    z-index: 0;
+}
+
+main {
+    width: 800px;
+    height: 800px;
+    max-width: 100%;
+    position: relative; 
+}
+
+.wrapper-not-yes{
+    background-color: rgba(255, 0, 0, 0);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#sim, #nao{
+    font-size: 40px;
+    padding: 20px;
+    display: block;
+    cursor: pointer;
+    color: aliceblue;
+    border-radius: 10px;
+}
+
+#sim{
+    background-color: rgb(252, 130, 150);
+    z-index: 2;
+}
+
+#nao{
+    background-color: tomato;
+    z-index: 1;
+}
+
+main img.background{
+    opacity: 10%;
+}
+
+
+#slide-content {
+    position: absolute;
+    inset: 0;
+    display: none;            /* ativado via .active */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    z-index: 5;               /* acima da imagem e dos botões */
+    color: #fff;              /* texto visível */
+
+    background-color: #2020203f;
+}
+
+#slide-content.active {
+    display: flex;
+}
+
+#mensagem {
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px #0000008a; /* garante leitura sobre a imagem */
+}
+
+#proximo{
+  padding: 10px 20px;
+  font-size: 30px;
+  border-radius:10px;
+  border:none;
+  background:#ff89b5;
+  color:#fff;
+  cursor:pointer;
+}
+
+#proximo:hover{background:#ff4d94;}
+
+#btnImprimir {
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #ff89b5;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#btnImprimir:hover {
+    background: #ff4d94;
+}
+
+@media print {
+  #btnImprimir {
+    display: none !important;
+  }
+}
+/* Corações subindo */
+.heart {
+  position: absolute;
+  bottom: 0;
+  color: #ff4d94;
+  font-size: 20px;
+  animation: subir 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-700px) scale(0.5); opacity: 0; }
+}

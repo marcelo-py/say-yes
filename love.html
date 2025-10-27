@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="love.css">
+</head>
+<body>
+    <h1>Aceita casar comigo?</h1>
+    <main>
+        <img src="image.png" alt="" class="background" id="bg">
+
+        <div class="wrapper-not-yes" id="choices">
+            <span id="sim">Sim</span>
+            <span id="nao">Não</span>
+        </div>
+
+        <div id="slide-content">
+            <p id="mensagem"></p>
+            <button id="proximo" style="display: none;">Avançar 💘</button>
+        </div>
+    </main>
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="btnImprimir" style="display:none;">🖨️ Imprimir</button>
+    </div>
+    
+    <audio id="musica" src="Helium.mp3" loop></audio>
+
+    <script>
+        const main = document.querySelector('main');
+        const nao = document.querySelector('#nao');
+        const sim = document.querySelector('#sim');
+        const bg = document.querySelector('#bg');
+        const choices = document.querySelector('#choices');
+        const slide = document.querySelector('#slide-content');
+        const msg = document.querySelector('#mensagem');
+        const btnProximo = document.querySelector('#proximo');
+        const musica = document.querySelector('#musica');
+        const btnImprimir = document.getElementById('btnImprimir');
+        let indiceSlide = 1;
+
+        // Lista de imagens para alternar
+        const imagens_brave = [
+            "brave1.webp",
+            "brave2.webp",
+            "brave3.webp",
+            "brave4.webp",
+            "brave5.webp"
+        ];
+
+        let indice = 0;
+
+        nao.addEventListener('mouseenter', () => {
+            const mainRect = main.getBoundingClientRect();
+            const naoRect = nao.getBoundingClientRect();
+
+            const maxX = mainRect.width - naoRect.width;
+            const maxY = mainRect.height - naoRect.height;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            nao.style.position = 'absolute';
+            nao.style.left = `${randomX}px`;
+            nao.style.top = `${randomY}px`;
+
+            // Troca a imagem de fundo
+            indice = (indice + 1) % imagens_brave.length; // alterna entre as imagens
+            bg.style.opacity = 0;
+            setTimeout(() => {
+                bg.src = imagens_brave[indice];
+                bg.style.opacity = 0.15;
+            }, 200);
+        });
+
+        sim.addEventListener('click', () => {
+            choices.style.display = 'none';
+            slide.classList.add('active');
+            mensagem.textContent = "Sabia que você ia dizer sim! Agora somos oficialmente um casal💞";
+            bg.src = 'image1.png'
+            musica.currentTime = 0;
+            musica.play().catch(()=>{});
+            btnProximo.style.display='inline-block';
+            iniciarCoracoes();
+        });
+
+
+        btnProximo.addEventListener('click', ()=>{
+            if(indiceSlide===1){
+                // slide 2
+                bg.src='imagem_dela.jpg';
+                msg.textContent="Mesmo estando longe, sua paciência e carinho me fazem valorizar cada momento que compartilhamos. Você me inspira a sonhar com um futuro cheio de amor e felicidade";
+                indiceSlide=2;
+            } else if(indiceSlide===2){
+                // slide 3
+                bg.src='image1.png';
+                msg.innerText="Eu, Dayane Crapine, aceito me casar com criador desta página \nAssinado: _______________________";
+                btnProximo.style.display='none';
+                indiceSlide=3;
+
+                btnImprimir.style.display = 'inline-block';
+            }
+        });
+
+        btnImprimir.addEventListener('click', () => {
+            window.print();
+        });
+        // corações subindo
+        function iniciarCoracoes(){
+            setInterval(()=>{
+                const heart = document.createElement('div');
+                heart.className='heart';
+                heart.textContent='💖';
+                const size=(Math.random()*24)+18;
+                heart.style.fontSize=size+'px';
+                const x=Math.random()*(main.offsetWidth-40);
+                heart.style.left=x+'px';
+                main.appendChild(heart);
+                setTimeout(()=>heart.remove(),4200);
+            },260);
+        }
+    </script>
+</body>
+</html>
